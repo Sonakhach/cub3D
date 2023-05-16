@@ -1,15 +1,5 @@
 #include "cub3d.h"
 
-// void free_double(char **x)
-// {
-// 	int	i;
-
-// 	i = 0;
-// 	while (x[i])
-// 		free (x[i]);
-// 	free(x);
-// }
-
 void	check_path(char *path, char *args)
 {
 	int	i;
@@ -19,7 +9,7 @@ void	check_path(char *path, char *args)
 	i = 0;
 	while (i < len - 4)
 		i++;
-    path += i;
+	path += i;
 	if (ft_strcmp(path, args))
 	{
 		write(1, "ERROR extantion\n", 16);
@@ -27,22 +17,23 @@ void	check_path(char *path, char *args)
 	}
 }
 
-int param_count(t_vars *vars)
+int	param_count(t_vars *vars)
 {
-    if (get_error_F_C(vars->floor) || get_error_F_C(vars->ceiling))
-        return (1);
-	if(vars->count_no != 1 || vars->count_so != 1 || vars->count_ea != 1
-	|| vars->count_we != 1 || vars->count_f != 1 || vars->count_c != 1)
+	if (get_error_F_C(vars->floor) || get_error_F_C(vars->ceiling))
+		return (1);
+		
+	if (vars->count_no != 1 || vars->count_so != 1 || vars->count_ea != 1
+		|| vars->count_we != 1 || vars->count_f != 1 || vars->count_c != 1)
 		return (1);
 	return (0);
 }
 
-int get_error_F_C(char	**str)
+int	get_error_F_C(char	**str)
 {
-	int i;
-	int number;
-	int j;
-	char *ptr;
+	int		i;
+	int		number;
+	int		j;
+	char	*ptr;
 
 	i = 1;
 	while (str[i])
@@ -53,7 +44,7 @@ int get_error_F_C(char	**str)
 		if (ft_strcmp(str[i], ",") == 0)
 			return (1);
 		if (number < 0 || number > 255)
-            return (1);
+			return (1);
 		while (ptr[j])
 		{
 			if (ft_isdigit(ptr[j]) == 0)
@@ -66,11 +57,11 @@ int get_error_F_C(char	**str)
 	return (0);
 }
 
-int get_storacet_count(char **str)
+int	get_storacet_count(char **str)
 {
-	int i;
-	int count;
-	int len;
+	int	i;
+	int	count;
+	int	len;
 
 	count = 0;
 	i = 1;
@@ -85,22 +76,21 @@ int get_storacet_count(char **str)
 	}
 	if (count != 2)
 		return (1);
-	if (count == 2 && str[3][len-1] == ',')
+	if (count == 2 && str[3][len - 1] == ',')
 		return (1);
-		
 	return (0);
 }
 
-int get_er_par_count(char **str)
+int	get_er_par_count(char **str)
 {
-    int i;
-   
-    i = 0;
-    while (str[i])
-    {
-        if (i == 2)
-        	return (1);
-        i++;
-    }
-    return (0);
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (i == 2)
+			return (1);
+		i++;
+	}	
+	return (0);
 }

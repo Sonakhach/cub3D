@@ -70,5 +70,7 @@ void struct_zero(t_vars *vars);
 int map01_check_error(char **str, t_vars *vars);
 char * get_string_inner(char *map, int		fd,   t_vars *vars);
 void cmp_param_inner(t_vars *vars, char **row);
+int	get_matrix_len(char	*av, t_vars *vars);
+void check_digit(char **nort);
 
 #endif
