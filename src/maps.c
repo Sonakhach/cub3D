@@ -97,12 +97,13 @@ char	*get_map_01(char	**str)
 	return (map01);
 }
 
-char	**get_matrix_map01(t_vars *vars)
+char	**get_matrix_map01(t_vars *vars, t_cub *cub)
 {
 	char	*map_line;
 
 	map_line = get_map_01(vars->matrix);
 	vars->map01 = ft_split(map_line, '\n');
+	cub->map = vars->map01;
 	free(map_line);
 	return (0);
 }

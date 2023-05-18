@@ -27,10 +27,7 @@ void	ft_print(char **str)
 
 	j = 0;
 	while (str[j])
-	{
-		printf("str %s\n", str[j]);
 		j++;
-	}
 }
 
 int	empty_lin(char *str)
@@ -54,10 +51,7 @@ int	empty_lin(char *str)
 void check_digit(char **nort)
 {	
 	if (!nort[1])
-	{
-		printf("error!\n");
 		exit(1);
-	}
 	else if(ft_isdigit(nort[1][0]) == 0)
 		check_path(nort[1], ".xpm");
 }

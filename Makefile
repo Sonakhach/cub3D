@@ -2,10 +2,12 @@ NAME = cub3d
 
 CC = cc
 
-CFLAGS =   -ggdb3  -Wall -Wextra -Werror #-fsanitize=memory -g  #-Werror #-fstack-protector-all 
+CFLAGS = -Wall -Wextra -Werror #-fsanitize=memory -g  #-Werror #-fstack-protector-all 
 SRCS = $(wildcard ./src/*.c) 
 
 OBJS = $(patsubst %.c, %.o, $(SRCS))
+
+MLX = -lmlx -framework OpenGL -framework Appkit
 
 INCLUDES = -Ilibft  -I./include
 
@@ -25,7 +27,7 @@ RM = rm -f
 all: $(NAME) 
 	
 $(NAME): $(OBJS) $(LINKERLIBFT) 
-	$(CC) $(CFLAGS) $(LINKERS) $(LINKERLIBFT) $(INCLUDES) $(OBJS) -o $(NAME)
+	$(CC) $(CFLAGS) $(MLX) $(LINKERS) $(LINKERLIBFT) $(INCLUDES) $(OBJS) -o $(NAME)
 
 $(LINKERLIBFT) :
 	$(MAKE) -C $(LIBFT)
