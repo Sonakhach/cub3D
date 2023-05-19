@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   map_helper.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sokhacha <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/05/19 12:19:31 by sokhacha          #+#    #+#             */
+/*   Updated: 2023/05/19 12:19:33 by sokhacha         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 
 int	get_matrix_len(char	*av, t_vars *vars)
@@ -56,7 +68,7 @@ void check_digit(char **nort)
 		check_path(nort[1], ".xpm");
 }
 
-// void free_double(char **x)
+// void free_all(char **x)
 // {
 // 	int	i;
 

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   error_map01.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sokhacha <sokhacha@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/05/19 11:24:46 by sokhacha          #+#    #+#             */
+/*   Updated: 2023/05/19 13:08:21 by sokhacha         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 
 int	error_map01(char **str)
@@ -125,18 +137,18 @@ int	map01_plyer_count(char **str, t_vars *vars)
 		while (str[i][j])
 		{
 			if (str[i][j] == 'W')
-				vars->count_W++;
+				vars->count_w++;
 			else if (str[i][j] == 'E')
-				vars->count_E++;
+				vars->count_e++;
 			else if (str[i][j] == 'N')
-				vars->count_N++;
+				vars->count_n++;
 			else if (str[i][j] == 'S')
-				vars->count_S++;
+				vars->count_s++;
 			j++;
 		}
 		i++;
 	}
-	if ((vars->count_N + vars->count_S + vars->count_E + vars->count_W) != 1)
+	if ((vars->count_n + vars->count_s + vars->count_e + vars->count_w) != 1)
 		return (1);
 	return (0);
 }

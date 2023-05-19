@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   error.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sokhacha <sokhacha@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/05/19 11:25:10 by sokhacha          #+#    #+#             */
+/*   Updated: 2023/05/19 13:21:50 by sokhacha         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 
 void	check_path(char *path, char *args)
@@ -21,14 +33,13 @@ int	param_count(t_vars *vars)
 {
 	if (get_error_F_C(vars->floor) || get_error_F_C(vars->ceiling))
 		return (1);
-		
 	if (vars->count_no != 1 || vars->count_so != 1 || vars->count_ea != 1
 		|| vars->count_we != 1 || vars->count_f != 1 || vars->count_c != 1)
 		return (1);
 	return (0);
 }
 
-int	get_error_F_C(char	**str)
+int	get_error_f_c(char	**str)
 {
 	int		i;
 	int		number;

@@ -1,4 +1,16 @@
-#ifndef CUBE3D_H
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cub3d.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sokhacha <sokhacha@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/05/19 13:03:03 by sokhacha          #+#    #+#             */
+/*   Updated: 2023/05/19 13:21:30 by sokhacha         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+# ifndef CUBE3D_H
 # define CUBE3D_H
 # include <string.h>
 # include <unistd.h>
@@ -9,7 +21,7 @@
 # include <math.h>
 # include "../libft/libft.h"
 
-#  define BUFFER_SIZE 42
+# define BUFFER_SIZE 42
 
 # define WIDTH			2040
 # define HEIGHT			1000
@@ -28,7 +40,7 @@
 typedef struct s_vars
 {
 	char	**matrix;
-	int 	count;
+	int		count;
 	char	**no;
 	char	**so;
 	char	**ea;
@@ -37,28 +49,28 @@ typedef struct s_vars
 	char	**ceiling;
 	char	**map01;
 	char	**map_param;
-	int 	count_no;
-	int 	count_so;
-	int 	count_ea;
-	int 	count_we;
-	int 	count_f;
-	int 	count_c;
-	int 	count_N;
-	int 	count_S;
-	int 	count_E;
-	int 	count_W;
+	int		count_no;
+	int		count_so;
+	int		count_ea;
+	int		count_we;
+	int		count_f;
+	int		count_c;
+	int		count_n;
+	int		count_s;
+	int		count_e;
+	int		count_w;
 
 }	t_vars;
 
 typedef struct s_cub
 {
-	char **map;
-	char *no;
-	char *so;
-	char *we;
-	char *ea;
-	int f_color[3];
-	int c_color[3];
+	char	**map;
+	char	*no;
+	char	*so;
+	char	*we;
+	char	*ea;
+	int		f_color[3];
+	int		c_color[3];
 }			t_cub;
 
 typedef struct s_img
@@ -133,53 +145,42 @@ typedef struct s_addres
 	t_cub			*cub;
 }				t_addres;
 
-
-
+// parsing part
 void	check_path(char *path, char *args);
-char    *get_string(char *av, t_vars *vars);
+char	*get_string(char *av, t_vars *vars);
 char	*get_next_line(int fd);
 char	**get_matrix(char	*map_binar, t_vars *vars);
-char ** get_param(char	**str,   t_vars *vars);
-// void ft_print(t_vars *vars);
-void ft_print(char **str);
-char *get_map_01(char	**str);
+char	**get_param(char **str, t_vars *vars);
+void	ft_print(char **str);
+char	*get_map_01(char	**str);
 char	**get_matrix_map01(t_vars *vars, t_cub *cub);//poxel enq
-int cmp_param(t_vars *vars);
-char *get_map_param(char	**str);
+int		cmp_param(t_vars *vars);
+char	*get_map_param(char	**str);
 char	**get_matrix_map_param(t_vars *vars);
-// int cmp_param_we(t_vars *vars);
-// int cmp_param_no(t_vars *vars);
-// int cmp_param_so(t_vars *vars);
-// int cmp_param_ea(t_vars *vars);
-int	param_count(t_vars *vars);
-int	get_error_F_C(char	**str); 
-// char **get_F_C(char	**str, t_vars *vars);
-// char **add_spaceF(t_vars *vars);
-// char **split_with_space_F(t_vars *vars);
-char **get_param_fl_ceil(char	**str, t_vars *vars);
-int get_storacet_count(char **str);
-int get_er_par_count( char **str);
-int error_map01(char **str);
-int error_map01_param(char **str);
-int error_wall(char **str);
-int map01_plyer_count(char **str, t_vars *vars);
-int  empty_lin(char *str);
-void cmp_param_for_zero(t_vars *vars);
-void struct_zero(t_vars *vars);
-int map01_check_error(char **str, t_vars *vars);
-char * get_string_inner(char *map, int		fd,   t_vars *vars);
-void cmp_param_inner(t_vars *vars, char **row);
-int	get_matrix_len(char	*av, t_vars *vars);
-void check_digit(char **nort);
+int		param_count(t_vars *vars);
+int		get_error_F_C(char	**str);
+char	**get_param_fl_ceil(char	**str, t_vars *vars);
+int		get_storacet_count(char **str);
+int		get_er_par_count( char **str);
+int		error_map01(char **str);
+int		error_map01_param(char **str);
+int		error_wall(char **str);
+int		map01_plyer_count(char **str, t_vars *vars);
+int		empty_lin(char *str);
+void	cmp_param_for_zero(t_vars *vars);
+void	struct_zero(t_vars *vars);
+int		map01_check_error(char **str, t_vars *vars);
+char	*get_string_inner(char *map, int fd, t_vars *vars);
+void	cmp_param_inner(t_vars *vars, char **row);
+int		get_matrix_len(char	*av, t_vars *vars);
+void	check_digit(char **nort);
+void	init_param_struct(t_vars *vars, t_cub *cub);
+void	init_colors(t_vars *vars, t_cub *cub);
+void	init_colors_floor(t_vars *vars, t_cub *cub);
+void	init_colors_ceiling(t_vars *vars, t_cub *cub);
+// void free_all(char **x);
 
-//avelacrac
-
-void    init_param_struct(t_vars *vars, t_cub *cub);
-void init_colors(t_vars *vars, t_cub *cub);
-void init_colors_floor(t_vars *vars, t_cub *cub);
-void init_colors_ceiling(t_vars *vars, t_cub *cub);
-
-// suren 
+// rayCasting part*** draw_window.c, init_win.c, init_win2.c, init_win3.c, init_win4.c, key_manager.c, structs_implement.c, print_error.c, moves.c
 void	init_struct_game(t_addres *address);
 void	init_struct_index(t_addres *address);
 void	init_struct_img(t_addres *address);
@@ -212,7 +213,7 @@ void	move_left(t_addres *address);
 void	move_right(t_addres *address);
 void	move_up(t_addres *address);
 void	move_down(t_addres *address);
-
-//
+void	free_game(t_game *game);
+void	free_all(t_addres *address);
 
 #endif
