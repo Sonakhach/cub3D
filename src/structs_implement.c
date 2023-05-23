@@ -100,12 +100,3 @@ void	init_struct_raycasting(t_addres *address)
 	address->rcasting->mapy = 0;
 	address->rcasting->hit = 0;
 }
-
-void	init_structs(t_addres *address)
-{
-	init_struct_raycasting(address);
-	init_struct_index(address);
-	init_struct_game(address);
-	init_struct_img(address);
-	init_struct_cub(address);
-}

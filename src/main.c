@@ -24,8 +24,6 @@ void	struct_zero(t_vars *vars)
 	vars->count_s = 0;
 	vars->count_e = 0;
 	vars->count_w = 0;
-	// addres.cub.map = NULL;
-	// addres.cub.texture = NULL;
 	vars->no = NULL;
 	vars->so = NULL;
 	vars->we = NULL;
@@ -38,7 +36,7 @@ void	check_errors(t_vars *vars)
 		|| get_storacet_count(vars->ceiling) || param_count(vars)
 		|| error_map01(vars->map01) || error_map01_param(vars->map01))
 	{
-		write (2, "Error count\n", 12);
+		write (2, "Error main\n", 12);
 		exit (1);
 	}
 	if (get_er_par_count(vars->no) || get_er_par_count(vars->so)
@@ -51,21 +49,41 @@ void	check_errors(t_vars *vars)
 	}
 }
 
-void	print_cub(t_cub *cub)
+char	**get_param(char **str, t_vars *vars)
 {
-	int	i;
+	int		i;
+	char	**nort;
+	char	*trim;
 
 	i = -1;
-	while (cub->map && cub->map[++i])
-		printf("map[%d] = \"%s\"\n", i, cub->map[i]);
-	printf("no = \"%s\"\n", cub->no);
-	printf("so = \"%s\"\n", cub->so);
-	printf("we = \"%s\"\n", cub->we);
-	printf("ea = \"%s\"\n", cub->ea);
-	printf("c red = %d\tgreen = %d\tblue = %d\n", cub->c_color[0],
-		cub->c_color[1], cub->c_color[2]);
-	printf("f red = %d\tgreen = %d\tblue = %d\n", cub->f_color[0],
-		cub->f_color[1], cub->f_color[2]);
+	while (str[++i] && i < 6)
+	{
+		nort = ft_split(str[i], ' ');
+		trim = ft_strtrim(nort[0], "\t");
+		check_digit(nort);
+		get_param_inner(nort, vars, trim);
+		free(trim);
+	}
+	return (nort);
+}
+
+char	*get_param_inner(char **nort, t_vars *vars, char *trim)
+{
+	if (ft_strcmp(trim, "NO") == 0)
+		vars->no = nort;
+	else if (ft_strcmp(trim, "SO") == 0)
+		vars->so = nort;
+	else if (ft_strcmp(trim, "EA") == 0)
+		vars->ea = nort;
+	else if (ft_strcmp(trim, "WE") == 0)
+		vars->we = nort;
+	else if (ft_strcmp(trim, "F") == 0)
+		vars->floor = nort;
+	else if (ft_strcmp(trim, "C") == 0)
+		vars->ceiling = nort;
+	else
+		return (NULL);
+	return (0);
 }
 
 int	main(int ac, char **av)
@@ -90,9 +108,6 @@ int	main(int ac, char **av)
 		mlx_hook(addres.game->win, 17, 1L << 0, close_game, &addres);
 		mlx_hook(addres.game->win, 2, 1L << 0, key_manager, &addres);
 		mlx_loop(addres.game->mlx);
-		//  while(1);
 	}
-	// ft_print(vars.matrix);
-	// ft_print(cub.map);
 	return (0);
 }

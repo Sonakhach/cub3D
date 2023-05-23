@@ -21,47 +21,55 @@ void	init_param_struct(t_vars *vars, t_cub *cub)
 
 void	init_colors_ceiling(t_vars *vars, t_cub *cub)
 {
-    int     i;
-    int     j;
-    char    *ptr;
-    int     number;
+	int		i;
+	int		j;
+	char	*ptr;
+	int		number;
 
-    i = 1;
-    j = 0;
-    while (vars->ceiling[i])
-    {
-        ptr = ft_strtrim(vars->ceiling[i], ",");
-        number = ft_atoi(ptr);
-        cub->f_color[j] = number;
-        free(ptr);
-        j++;
-        i++;
-    }
+	i = 1;
+	j = 0;
+	while (vars->ceiling[i])
+	{
+		ptr = ft_strtrim(vars->ceiling[i], ",");
+		number = ft_atoi(ptr);
+		cub->c_color[j] = number;
+		free(ptr);
+		j++;
+		i++;
+	}
 }
 
 void	init_colors_floor(t_vars *vars, t_cub *cub)
 {
-    int     i;
-    int     j;
-    char    *ptr;
-    int     number;
+	char	*ptr;
+	int		number;
+	int		i;
+	int		j;
 
-    i = 1;
-    j = 0;
-
-    while (vars->floor[i])
-    {
-        ptr = ft_strtrim(vars->floor[i], ",");
+	i = 1;
+	j = 0;
+	while (vars->floor[i])
+	{
+		ptr = ft_strtrim(vars->floor[i], ",");
 		number = ft_atoi(ptr);
-        cub->f_color[j] = number;
-        free(ptr);
-        j++;
-        i++;
-    }
+		cub->f_color[j] = number;
+		free(ptr);
+		j++;
+		i++;
+	}
 }
 
-void    init_colors(t_vars *vars, t_cub *cub)
+void	init_colors(t_vars *vars, t_cub *cub)
 {
-    init_colors_floor(vars, cub);
-    init_colors_ceiling(vars, cub);
+	init_colors_floor(vars, cub);
+	init_colors_ceiling(vars, cub);
+}
+
+void	init_structs(t_addres *address)
+{
+	init_struct_raycasting(address);
+	init_struct_index(address);
+	init_struct_game(address);
+	init_struct_img(address);
+	init_struct_cub(address);
 }

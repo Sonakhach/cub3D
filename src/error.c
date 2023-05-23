@@ -31,10 +31,10 @@ void	check_path(char *path, char *args)
 
 int	param_count(t_vars *vars)
 {
-	if (get_error_F_C(vars->floor) || get_error_F_C(vars->ceiling))
+	if (get_error_f_c(vars->floor) || get_error_f_c(vars->ceiling))
 		return (1);
-	if (vars->count_no != 1 || vars->count_so != 1 || vars->count_ea != 1
-		|| vars->count_we != 1 || vars->count_f != 1 || vars->count_c != 1)
+	if (vars->count_no != 1 && vars->count_so != 1 && vars->count_ea != 1
+		&& vars->count_we != 1 && vars->count_f != 1 && vars->count_c != 1)
 		return (1);
 	return (0);
 }

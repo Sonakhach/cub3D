@@ -10,8 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-# ifndef CUBE3D_H
-# define CUBE3D_H
+#ifndef CUB3D_H
+# define CUB3D_H
+
 # include <string.h>
 # include <unistd.h>
 # include <stdio.h>
@@ -158,7 +159,7 @@ int		cmp_param(t_vars *vars);
 char	*get_map_param(char	**str);
 char	**get_matrix_map_param(t_vars *vars);
 int		param_count(t_vars *vars);
-int		get_error_F_C(char	**str);
+int		get_error_f_c(char	**str);
 char	**get_param_fl_ceil(char	**str, t_vars *vars);
 int		get_storacet_count(char **str);
 int		get_er_par_count( char **str);
@@ -178,9 +179,11 @@ void	init_param_struct(t_vars *vars, t_cub *cub);
 void	init_colors(t_vars *vars, t_cub *cub);
 void	init_colors_floor(t_vars *vars, t_cub *cub);
 void	init_colors_ceiling(t_vars *vars, t_cub *cub);
+char	*get_param_inner(char **nort, t_vars *vars, char *trim);
 // void free_all(char **x);
 
-// rayCasting part*** draw_window.c, init_win.c, init_win2.c, init_win3.c, init_win4.c, key_manager.c, structs_implement.c, print_error.c, moves.c
+// rayCasting part*** draw_window.c, init_win.c, init_win2.c, init_win3.c,
+// init_win4.c, key_manager.c, structs_implement.c, print_error.c, moves.c
 void	init_struct_game(t_addres *address);
 void	init_struct_index(t_addres *address);
 void	init_struct_img(t_addres *address);
@@ -213,7 +216,8 @@ void	move_left(t_addres *address);
 void	move_right(t_addres *address);
 void	move_up(t_addres *address);
 void	move_down(t_addres *address);
-void	free_game(t_game *game);
+// void	free_game(t_game *game);
+void	free_game(t_addres *address);
 void	free_all(t_addres *address);
 
 #endif

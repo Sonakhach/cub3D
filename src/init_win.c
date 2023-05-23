@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_win.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sokhacha <sokhacha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: amtadevo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/19 12:17:09 by sokhacha          #+#    #+#             */
-/*   Updated: 2023/05/19 12:51:43 by sokhacha         ###   ########.fr       */
+/*   Created: 2023/05/23 14:06:58 by amtadevo          #+#    #+#             */
+/*   Updated: 2023/05/23 14:07:37 by amtadevo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,8 +111,6 @@ void	init_win(t_addres *address)
 	int	i;
 
 	i = 0;
-	free(address->img[0].ptr);
-	free(address->img[0].img);
 	find_pos_player(address);
 	address->img[0].ptr = mlx_new_image(address->game->mlx, WIDTH, HEIGHT);
 	address->img[0].img = mlx_get_data_addr(address->img[0].ptr, \
@@ -133,4 +131,5 @@ void	init_win(t_addres *address)
 	}
 	mlx_put_image_to_window(address->game->mlx, address->game->win, \
 	address->img[0].ptr, 0, 0);
+	mlx_destroy_image(address->game->mlx, address->img[0].ptr);
 }

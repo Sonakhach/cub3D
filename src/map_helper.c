@@ -33,15 +33,6 @@ int	get_matrix_len(char	*av, t_vars *vars)
 	return (count + len);
 }
 
-void	ft_print(char **str)
-{	
-	int	j;
-
-	j = 0;
-	while (str[j])
-		j++;
-}
-
 int	empty_lin(char *str)
 {
 	int	i;
@@ -60,20 +51,27 @@ int	empty_lin(char *str)
 	return (0);
 }
 
-void check_digit(char **nort)
+void	check_digit(char **nort)
 {	
 	if (!nort[1])
 		exit(1);
-	else if(ft_isdigit(nort[1][0]) == 0)
+	else if (ft_isdigit(nort[1][0]) == 0)
 		check_path(nort[1], ".xpm");
 }
 
-// void free_all(char **x)
-// {
-// 	int	i;
+void	print_cub(t_cub *cub)
+{
+	int	i;
 
-// 	i = 0;
-// 	while (x[i])
-// 		free (x[i]);
-// 	free(x);
-// }
+	i = -1;
+	while (cub->map && cub->map[++i])
+		printf("map[%d] = \"%s\"\n", i, cub->map[i]);
+	printf("no = \"%s\"\n", cub->no);
+	printf("so = \"%s\"\n", cub->so);
+	printf("we = \"%s\"\n", cub->we);
+	printf("ea = \"%s\"\n", cub->ea);
+	printf("c red = %d\tgreen = %d\tblue = %d\n", cub->c_color[0],
+		cub->c_color[1], cub->c_color[2]);
+	printf("f red = %d\tgreen = %d\tblue = %d\n", cub->f_color[0],
+		cub->f_color[1], cub->f_color[2]);
+}

@@ -12,34 +12,6 @@
 
 #include "cub3d.h"
 
-char	**get_param(char **str, t_vars *vars)
-{
-	int		i;
-	char	**nort;
-
-	i = -1;
-	while (str[++i] && i < 6)
-	{
-		nort = ft_split(str[i], ' ');
-		check_digit(nort);
-		if (ft_strcmp(nort[0], "NO") == 0)
-			vars->no = nort;
-		else if (ft_strcmp(nort[0], "SO") == 0)
-			vars->so = nort;
-		else if (ft_strcmp(nort[0], "EA") == 0)
-			vars->ea = nort;
-		else if (ft_strcmp(nort[0], "WE") == 0)
-			vars->we = nort;
-		else if (ft_strcmp(nort[0], "F") == 0)
-			vars->floor = nort;
-		else if (ft_strcmp(nort[0], "C") == 0)
-			vars->ceiling = nort;
-		else
-			return (NULL);
-	}
-	return (nort);
-}
-
 char	*get_map_param(char	**str)
 {
 	int		i;
@@ -68,7 +40,6 @@ char	**get_matrix_map_param(t_vars *vars)
 	free(map_line);
 	return (0);
 }
-
 
 int	cmp_param(t_vars *vars)
 {

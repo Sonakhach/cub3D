@@ -12,7 +12,7 @@
 
 #include "cub3d.h"
 
-char	*get_string_inner(char *map, int fd,  t_vars *vars)
+char	*get_string_inner(char *map, int fd, t_vars *vars)
 {
 	char	*map_binar;
 
@@ -71,7 +71,7 @@ char	**get_matrix(char	*av, t_vars *vars)
 
 	i = -1;
 	j = 0;
-	map_line_add_spac = ft_calloc(get_matrix_len(av, vars) + 1 , 1);
+	map_line_add_spac = ft_calloc(get_matrix_len(av, vars) + 1, 1);
 	map_line = get_string(av, vars);
 	while (map_line[++i])
 	{
