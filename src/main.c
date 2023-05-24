@@ -53,16 +53,16 @@ char	**get_param(char **str, t_vars *vars)
 {
 	int		i;
 	char	**nort;
-	char	*trim;
 
 	i = -1;
 	while (str[++i] && i < 6)
 	{
+		str[i] = no_tab(str[i]);
 		nort = ft_split(str[i], ' ');
-		trim = ft_strtrim(nort[0], "\t");
 		check_digit(nort);
-		get_param_inner(nort, vars, trim);
-		free(trim);
+		if (get_param_inner(nort, vars, nort[0]) == NULL)
+			return (NULL);
+		free(nort[0]);
 	}
 	return (nort);
 }
@@ -83,7 +83,7 @@ char	*get_param_inner(char **nort, t_vars *vars, char *trim)
 		vars->ceiling = nort;
 	else
 		return (NULL);
-	return (0);
+	return (trim);
 }
 
 int	main(int ac, char **av)

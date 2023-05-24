@@ -6,7 +6,7 @@
 /*   By: sokhacha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 12:19:31 by sokhacha          #+#    #+#             */
-/*   Updated: 2023/05/19 12:19:33 by sokhacha         ###   ########.fr       */
+/*   Updated: 2023/05/24 16:54:44 by sokhacha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,19 +59,32 @@ void	check_digit(char **nort)
 		check_path(nort[1], ".xpm");
 }
 
-void	print_cub(t_cub *cub)
+char	*no_tab(char *str)
 {
 	int	i;
 
 	i = -1;
-	while (cub->map && cub->map[++i])
-		printf("map[%d] = \"%s\"\n", i, cub->map[i]);
-	printf("no = \"%s\"\n", cub->no);
-	printf("so = \"%s\"\n", cub->so);
-	printf("we = \"%s\"\n", cub->we);
-	printf("ea = \"%s\"\n", cub->ea);
-	printf("c red = %d\tgreen = %d\tblue = %d\n", cub->c_color[0],
-		cub->c_color[1], cub->c_color[2]);
-	printf("f red = %d\tgreen = %d\tblue = %d\n", cub->f_color[0],
-		cub->f_color[1], cub->f_color[2]);
+	while (str[++i])
+	{
+		if (str[i] == '\t')
+			str[i] = ' ';
+	}
+	return (str);
 }
+
+// void	print_cub(t_cub *cub)
+// {
+// 	int	i;
+
+// 	i = -1;
+// 	while (cub->map && cub->map[++i])
+// 		printf("map[%d] = \"%s\"\n", i, cub->map[i]);
+// 	printf("no = \"%s\"\n", cub->no);
+// 	printf("so = \"%s\"\n", cub->so);
+// 	printf("we = \"%s\"\n", cub->we);
+// 	printf("ea = \"%s\"\n", cub->ea);
+// 	printf("c red = %d\tgreen = %d\tblue = %d\n", cub->c_color[0],
+// 		cub->c_color[1], cub->c_color[2]);
+// 	printf("f red = %d\tgreen = %d\tblue = %d\n", cub->f_color[0],
+// 		cub->f_color[1], cub->f_color[2]);
+// }

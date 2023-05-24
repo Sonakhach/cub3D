@@ -6,7 +6,7 @@
 /*   By: sokhacha <sokhacha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 13:03:03 by sokhacha          #+#    #+#             */
-/*   Updated: 2023/05/19 13:21:30 by sokhacha         ###   ########.fr       */
+/*   Updated: 2023/05/24 16:57:40 by sokhacha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,7 +154,7 @@ char	**get_matrix(char	*map_binar, t_vars *vars);
 char	**get_param(char **str, t_vars *vars);
 void	ft_print(char **str);
 char	*get_map_01(char	**str);
-char	**get_matrix_map01(t_vars *vars, t_cub *cub);//poxel enq
+char	**get_matrix_map01(t_vars *vars, t_cub *cub);
 int		cmp_param(t_vars *vars);
 char	*get_map_param(char	**str);
 char	**get_matrix_map_param(t_vars *vars);
@@ -180,7 +180,7 @@ void	init_colors(t_vars *vars, t_cub *cub);
 void	init_colors_floor(t_vars *vars, t_cub *cub);
 void	init_colors_ceiling(t_vars *vars, t_cub *cub);
 char	*get_param_inner(char **nort, t_vars *vars, char *trim);
-// void free_all(char **x);
+char	*no_tab(char *str);
 
 // rayCasting part*** draw_window.c, init_win.c, init_win2.c, init_win3.c,
 // init_win4.c, key_manager.c, structs_implement.c, print_error.c, moves.c
