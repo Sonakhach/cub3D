@@ -6,7 +6,7 @@
 /*   By: sokhacha <sokhacha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 12:19:07 by sokhacha          #+#    #+#             */
-/*   Updated: 2023/05/19 13:13:28 by sokhacha         ###   ########.fr       */
+/*   Updated: 2023/05/29 11:36:12 by sokhacha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@ void	check_errors(t_vars *vars)
 {
 	if (get_param(vars->matrix, vars) == NULL || get_storacet_count(vars->floor)
 		|| get_storacet_count(vars->ceiling) || param_count(vars)
-		|| error_map01(vars->map01) || error_map01_param(vars->map01))
+		|| error_map01(vars->map01) || error_map01_param(vars->map01)
+		|| map_check_error(vars->map01))
 	{
 		write (2, "Error main\n", 12);
 		exit (1);

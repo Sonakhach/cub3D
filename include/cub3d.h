@@ -181,6 +181,7 @@ void	init_colors_floor(t_vars *vars, t_cub *cub);
 void	init_colors_ceiling(t_vars *vars, t_cub *cub);
 char	*get_param_inner(char **nort, t_vars *vars, char *trim);
 char	*no_tab(char *str);
+int		map_check_error(char **str);
 
 // rayCasting part*** draw_window.c, init_win.c, init_win2.c, init_win3.c,
 // init_win4.c, key_manager.c, structs_implement.c, print_error.c, moves.c

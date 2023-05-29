@@ -6,7 +6,7 @@
 /*   By: sokhacha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 12:20:00 by sokhacha          #+#    #+#             */
-/*   Updated: 2023/05/19 12:20:03 by sokhacha         ###   ########.fr       */
+/*   Updated: 2023/05/29 11:37:24 by sokhacha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ char	*get_string(char *av, t_vars *vars)
 	int		fd;
 	char	*map;
 	char	*line;
+	int		len;
 
 	vars->count = 0;
 	line = NULL;
@@ -57,6 +58,12 @@ char	*get_string(char *av, t_vars *vars)
 		exit(1);
 	}
 	map = get_next_line(fd);
+	len = ft_strlen(map);
+	if (len == 0)
+	{
+		write(1, "Something went wrong\n", 21);
+		exit(1);
+	}
 	line = get_string_inner(map, fd, vars);
 	return (line);
 }

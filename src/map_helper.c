@@ -6,7 +6,7 @@
 /*   By: sokhacha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 12:19:31 by sokhacha          #+#    #+#             */
-/*   Updated: 2023/05/24 16:54:44 by sokhacha         ###   ########.fr       */
+/*   Updated: 2023/05/29 11:38:16 by sokhacha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,19 +72,26 @@ char	*no_tab(char *str)
 	return (str);
 }
 
-// void	print_cub(t_cub *cub)
-// {
-// 	int	i;
+int	map_check_error(char **str)
+{
+	int	i;
+	int	j;
+	int	len;
+	int	new_len;
 
-// 	i = -1;
-// 	while (cub->map && cub->map[++i])
-// 		printf("map[%d] = \"%s\"\n", i, cub->map[i]);
-// 	printf("no = \"%s\"\n", cub->no);
-// 	printf("so = \"%s\"\n", cub->so);
-// 	printf("we = \"%s\"\n", cub->we);
-// 	printf("ea = \"%s\"\n", cub->ea);
-// 	printf("c red = %d\tgreen = %d\tblue = %d\n", cub->c_color[0],
-// 		cub->c_color[1], cub->c_color[2]);
-// 	printf("f red = %d\tgreen = %d\tblue = %d\n", cub->f_color[0],
-// 		cub->f_color[1], cub->f_color[2]);
-// }
+	i = 1;
+	while (str[i])
+	{
+		len = ft_strlen(str[i - 1]);
+		new_len = ft_strlen(str[i]);
+		j = 0;
+		while (str[i][j])
+		{
+			if ((len < new_len) && str[i][j] == '0' && j > len)
+				return (1);
+			j++;
+		}
+		i++;
+	}
+	return (0);
+}
