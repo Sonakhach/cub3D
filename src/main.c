@@ -32,25 +32,19 @@ void	struct_zero(t_vars *vars)
 
 void	check_errors(t_vars *vars)
 {
-	if (get_param(vars->matrix, vars) == NULL || get_storacet_count(vars->floor)
-		|| get_storacet_count(vars->ceiling) || param_count(vars)
+	if (vars->f_c_flag == 1 || get_storacet_count(vars->floor)
+		|| get_storacet_count(vars->ceiling) || (param_count(vars))
 		|| error_map01(vars->map01) || error_map01_param(vars->map01)
 		|| map_check_error(vars->map01))
-	{
-		write (2, "Error main\n", 12);
-		exit (1);
-	}
+		print_error_exit("Error main\n");
 	if (get_er_par_count(vars->no) || get_er_par_count(vars->so)
 		|| get_er_par_count(vars->ea) || get_er_par_count(vars->we)
 		|| map01_check_error(vars->map01, vars) || error_wall(vars->map01)
 		|| map01_plyer_count(vars->map01, vars))
-	{
-		write (2, "Error param count\n", 18);
-		exit (1);
-	}
+		print_error_exit("Error param count\n");
 }
 
-char	**get_param(char **str, t_vars *vars)
+void	get_param(char **str, t_vars *vars)
 {
 	int		i;
 	char	**nort;
@@ -58,14 +52,15 @@ char	**get_param(char **str, t_vars *vars)
 	i = -1;
 	while (str[++i] && i < 6)
 	{
-		str[i] = no_tab(str[i]);
+		no_tab(str[i]);
 		nort = ft_split(str[i], ' ');
+		cmp_param_inner(vars, nort[0]);
 		check_digit(nort);
 		if (get_param_inner(nort, vars, nort[0]) == NULL)
-			return (NULL);
+			vars->f_c_flag = 1;
 		free(nort[0]);
 	}
-	return (nort);
+	vars->f_c_flag = 0;
 }
 
 char	*get_param_inner(char **nort, t_vars *vars, char *trim)
@@ -89,18 +84,19 @@ char	*get_param_inner(char **nort, t_vars *vars, char *trim)
 
 int	main(int ac, char **av)
 {
-	t_vars		vars;
-	t_addres	addres;
+	t_vars				vars;
+	t_addres			addres;
+	t_for_get_matrix	tmp;
 
 	if (ac == 2)
 	{
-		struct_zero(&vars);
 		check_path(av[1], ".cub");
-		vars.matrix = get_matrix(av[1], &vars);
+		struct_zero(&vars);
+		vars.matrix = get_matrix(av[1], &vars, &tmp);
 		init_structs(&addres);
 		get_matrix_map01(&vars, addres.cub);
 		get_matrix_map_param(&vars);
-		cmp_param(&vars);
+		get_param(vars.matrix, &vars);
 		check_errors(&vars);
 		init_param_struct(&vars, addres.cub);
 		init_colors(&vars, addres.cub);
@@ -110,5 +106,7 @@ int	main(int ac, char **av)
 		mlx_hook(addres.game->win, 2, 1L << 0, key_manager, &addres);
 		mlx_loop(addres.game->mlx);
 	}
+	else
+		print_error_exit("error arguments\n");
 	return (0);
 }

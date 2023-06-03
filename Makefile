@@ -2,7 +2,7 @@ NAME = cub3D
 
 CC = cc
 
-CFLAGS = -Wall -Wextra -Werror #-fsanitize=memory -g  #-Werror #-fstack-protector-all 
+CFLAGS = -Wall -Wextra -Werror
 SRCS = $(wildcard ./src/*.c) 
 
 OBJS = $(patsubst %.c, %.o, $(SRCS))

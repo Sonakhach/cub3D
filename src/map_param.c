@@ -34,56 +34,29 @@ char	*get_map_param(char	**str)
 char	**get_matrix_map_param(t_vars *vars)
 {
 	char	*map_line;
+	int		count;
 
 	map_line = get_map_param(vars->matrix);
 	vars->map_param = ft_split(map_line, '\n');
+	count = 0;
+	while (vars->map_param && vars->map_param[count])
+		count++;
 	free(map_line);
 	return (0);
 }
 
-int	cmp_param(t_vars *vars)
+void	cmp_param_inner(t_vars *vars, char *row)
 {
-	int		i;
-	char	**str;
-	char	**row;
-	char	*ptr;
-
-	i = 0;
-	ptr = get_map_param(vars->map_param);
-	str = ft_split(ptr, '\n');
-	while (str[i] && i < 6)
-	{
-		row = ft_split(str[i], ' ');
-		cmp_param_inner(vars, row);
-		free(str[i]);
-		i++;
-	}
-	free(ptr);
-	free(str);
-	return (0);
-}
-
-void	cmp_param_inner(t_vars *vars, char **row)
-{
-	int	col;
-
-	col = 0;
-	while (row[col])
-	{
-		if (ft_strcmp(row[col], "NO") == 0)
-			vars->count_no++;
-		else if (ft_strcmp(row[col], "SO") == 0)
-			vars->count_so++;
-		else if (ft_strcmp(row[col], "EA") == 0)
-			vars->count_ea++;
-		else if (ft_strcmp(row[col], "WE") == 0)
-			vars->count_we++;
-		else if (ft_strcmp(row[col], "F") == 0)
-			vars->count_f++;
-		else if (ft_strcmp(row[col], "C") == 0)
-			vars->count_c++;
-		free(row[col]);
-		col++;
-	}
-	free(row);
+	if (ft_strcmp(row, "NO") == 0)
+		vars->count_no++;
+	else if (ft_strcmp(row, "SO") == 0)
+		vars->count_so++;
+	else if (ft_strcmp(row, "EA") == 0)
+		vars->count_ea++;
+	else if (ft_strcmp(row, "WE") == 0)
+		vars->count_we++;
+	else if (ft_strcmp(row, "F") == 0)
+		vars->count_f++;
+	else if (ft_strcmp(row, "C") == 0)
+		vars->count_c++;
 }

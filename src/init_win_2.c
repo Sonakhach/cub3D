@@ -66,7 +66,7 @@ int	draw_walls(t_addres *address, char *dest, char *dest_2, int texx)
 	step = 1.0 * address->img[n].width / address->rcasting->lineheight;
 	texpos = (address->rcasting->drawstart - HEIGHT / 2 + \
 	address->rcasting->lineheight / 2) * step;
-	while (i < address->rcasting->drawend)
+	while (i <= address->rcasting->drawend)
 	{
 		texy = (int)texpos & address->img[n].width;
 		texpos += step;

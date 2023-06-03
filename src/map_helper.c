@@ -59,17 +59,16 @@ void	check_digit(char **nort)
 		check_path(nort[1], ".xpm");
 }
 
-char	*no_tab(char *str)
+void	no_tab(char *str)
 {
 	int	i;
 
 	i = -1;
 	while (str[++i])
 	{
-		if (str[i] == '\t')
+		if (ft_strchr("\t\v\f\r", str[i]))
 			str[i] = ' ';
 	}
-	return (str);
 }
 
 int	map_check_error(char **str)
@@ -80,7 +79,7 @@ int	map_check_error(char **str)
 	int	new_len;
 
 	i = 1;
-	while (str[i])
+	while (str && str[i])
 	{
 		len = ft_strlen(str[i - 1]);
 		new_len = ft_strlen(str[i]);

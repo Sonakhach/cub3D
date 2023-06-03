@@ -38,3 +38,9 @@ void	free_all(t_addres *address)
 	address->game = NULL;
 	address->img = NULL;
 }
+
+int	print_error_exit(char *str)
+{
+	write(2, str, ft_strlen(str));
+	exit(1);
+}

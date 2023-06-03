@@ -23,18 +23,15 @@ void	check_path(char *path, char *args)
 		i++;
 	path += i;
 	if (ft_strcmp(path, args))
-	{
-		write(1, "ERROR extantion\n", 16);
-		exit(1);
-	}
+		print_error_exit("Error extantion\n");
 }
 
 int	param_count(t_vars *vars)
 {
 	if (get_error_f_c(vars->floor) || get_error_f_c(vars->ceiling))
 		return (1);
-	if (vars->count_no != 1 && vars->count_so != 1 && vars->count_ea != 1
-		&& vars->count_we != 1 && vars->count_f != 1 && vars->count_c != 1)
+	if (vars->count_no != 1 || vars->count_so != 1 || vars->count_ea != 1
+		|| vars->count_we != 1 || vars->count_f != 1 || vars->count_c != 1)
 		return (1);
 	return (0);
 }
@@ -97,7 +94,7 @@ int	get_er_par_count(char **str)
 	int	i;
 
 	i = 0;
-	while (str[i])
+	while (str && str[i])
 	{
 		if (i == 2)
 			return (1);

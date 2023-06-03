@@ -60,6 +60,7 @@ typedef struct s_vars
 	int		count_s;
 	int		count_e;
 	int		count_w;
+	int		f_c_flag;
 
 }	t_vars;
 
@@ -145,13 +146,22 @@ typedef struct s_addres
 	t_img			*img;
 	t_cub			*cub;
 }				t_addres;
+typedef struct s_for_get_matrix
+{
+	char	**map_matrix;
+	char	*map_line;
+	char	*map_line_add_spac;
+	int		i;
+	int		j;
+}	t_for_get_matrix;
 
 // parsing part
 void	check_path(char *path, char *args);
 char	*get_string(char *av, t_vars *vars);
 char	*get_next_line(int fd);
-char	**get_matrix(char	*map_binar, t_vars *vars);
-char	**get_param(char **str, t_vars *vars);
+char	**get_matrix(char	*av, t_vars *vars, t_for_get_matrix *tmp);
+// char	**get_param(char **str, t_vars *vars);
+void	get_param(char **str, t_vars *vars);
 void	ft_print(char **str);
 char	*get_map_01(char	**str);
 char	**get_matrix_map01(t_vars *vars, t_cub *cub);
@@ -172,7 +182,7 @@ void	cmp_param_for_zero(t_vars *vars);
 void	struct_zero(t_vars *vars);
 int		map01_check_error(char **str, t_vars *vars);
 char	*get_string_inner(char *map, int fd, t_vars *vars);
-void	cmp_param_inner(t_vars *vars, char **row);
+void	cmp_param_inner(t_vars *vars, char *row);
 int		get_matrix_len(char	*av, t_vars *vars);
 void	check_digit(char **nort);
 void	init_param_struct(t_vars *vars, t_cub *cub);
@@ -180,7 +190,7 @@ void	init_colors(t_vars *vars, t_cub *cub);
 void	init_colors_floor(t_vars *vars, t_cub *cub);
 void	init_colors_ceiling(t_vars *vars, t_cub *cub);
 char	*get_param_inner(char **nort, t_vars *vars, char *trim);
-char	*no_tab(char *str);
+void	no_tab(char *str);
 int		map_check_error(char **str);
 
 // rayCasting part*** draw_window.c, init_win.c, init_win2.c, init_win3.c,
@@ -220,5 +230,7 @@ void	move_down(t_addres *address);
 // void	free_game(t_game *game);
 void	free_game(t_addres *address);
 void	free_all(t_addres *address);
+void	printf_vars(t_vars *vars);
+int		print_error_exit(char *str);
 
 #endif
